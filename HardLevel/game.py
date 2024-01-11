@@ -1,6 +1,9 @@
+import time
+
+
 class Game:
-    def __init__(self): 
-        self.player = None
+    def __init__(self):
+        self.players = []
         self.sequence_user = []
         self.raffle = []
         self.color_numbers = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "blue",
@@ -13,23 +16,38 @@ class Game:
         self.level = 4
 
     def create_player(self):
-        print('-' * 20)
-        print("WELCOME TO THE GAME\nCreate your profile:")
+        print('-' * 30)
+        print("WELCOME TO THE GAME\nCreate your player")
 
         try:
             name = input("Insert your name: ")
             age = input("Insert your age: ")
             self.player = Player(name, age)
+            self.players.append(self.player)
         except ValueError:
             print("You entered invalid data")
 
-        if self.player:
-            print("Player created")
-            print(f'{self.player.nome}: {self.player.points}')
-            self.menu()
-        else:
-            print("Try again")
+
+        print("Player created")
+        print("Checking players..")
+        time.sleep(1)
+        for self.player in self.players:
+            print(f'{self.player.nome}: {self.player.idade}')
+        self.option()
+
+    def option(self):
+        print('-' * 30)
+        option = int(input("Do you want to create another player?\n[1] Yes\n[2] No: "))
+
+        if option == 1:
             self.create_player()
+
+        elif option == 2:
+            self.menu()
+
+        else:
+            print("Invalid data. Insert again")
+            self.option()
 
     @staticmethod
     def menu():
@@ -40,7 +58,7 @@ class Game:
 
             if option == 1:
                 play = Giratron()
-                play.starting()
+                play.choose_player()
                 break
 
             elif option == 2:
@@ -54,6 +72,8 @@ class Game:
             elif option == 4:
                 print("Finishing game")
                 exit()
+
+
 
 
 if __name__ == "__main__":

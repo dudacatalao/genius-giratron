@@ -25,7 +25,7 @@ class Game:
 
         if self.player:
             print("Player created")
-            print(f'{self.player.nome}: {self.player.points}')
+            print(f'{self.player.nome}: {self.player.idade}')
             self.menu()
         else:
             print("Try again")

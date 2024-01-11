@@ -8,7 +8,7 @@ class Genius(Game):
         super().__init__()
 
     def starting(self):
-        print('-' * 20)
+        print('-' * 30)
         for i in range(1, 4):
             print(i)
             time.sleep(1)
@@ -70,8 +70,8 @@ class Genius(Game):
             self.starting()
 
     def play_again(self):
-        print("-" * 20)
-        option = int(input("Do you want to play again?\n[1] Yes\n[2] No\n[3]Menu\n"))
+        print("-" * 30)
+        option = int(input("Do you want to play again?\n[1] Yes\n[2] No\n[3] Menu: \n"))
 
         if option == 1:
             self.starting()
