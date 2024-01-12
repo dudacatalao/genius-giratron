@@ -14,6 +14,7 @@ class Game:
 
         self.win = False
         self.level = 4
+        self.chosen_player = None
 
     def create_player(self):
         print('-' * 30)
@@ -57,7 +58,7 @@ class Game:
             option = int(input("[1] Giratron\n[2] Genius\n[3] How to play?\n[4] Exit: "))
 
             if option == 1:
-                play = Giratron()
+                play = Game()
                 play.choose_player()
                 break
 
@@ -72,6 +73,28 @@ class Game:
             elif option == 4:
                 print("Finishing game")
                 exit()
+
+    def choose_player(self):
+        print("-" * 30)
+        print("First, choose your player")
+
+        for i, self.player in enumerate(self.players, start=1):
+            print(f'[{i}] {self.player.nome}')
+
+        player_name = input('Insert the name of the player: ')
+
+        for self.player in self.players:
+            if self.player.nome == player_name:
+                self.chosen_player = self.player
+                break
+
+        if self.chosen_player:
+            print(f'You have chosen {self.chosen_player.nome}')
+            play = Giratron()
+            play.choose_player()
+        else:
+            print(f'Player with name {player_name} not found. Please try again.')
+            self.choose_player()
 
 
 
